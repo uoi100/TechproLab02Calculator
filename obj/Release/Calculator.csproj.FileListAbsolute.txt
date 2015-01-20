@@ -1,0 +1,8 @@
+E:\Projects\Techpro\Lab02_Calculator\bin\Release\Calculator.exe.config
+E:\Projects\Techpro\Lab02_Calculator\bin\Release\Calculator.exe
+E:\Projects\Techpro\Lab02_Calculator\bin\Release\Calculator.pdb
+E:\Projects\Techpro\Lab02_Calculator\obj\Release\Calculator.Form1.resources
+E:\Projects\Techpro\Lab02_Calculator\obj\Release\Calculator.Properties.Resources.resources
+E:\Projects\Techpro\Lab02_Calculator\obj\Release\Calculator.csproj.GenerateResource.Cache
+E:\Projects\Techpro\Lab02_Calculator\obj\Release\Calculator.exe
+E:\Projects\Techpro\Lab02_Calculator\obj\Release\Calculator.pdb

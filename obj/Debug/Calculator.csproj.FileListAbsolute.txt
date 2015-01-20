@@ -13,3 +13,8 @@ C:\Users\Calvin Truong\OneDrive\BCIT\Tech Pro\A00812171_Truong_Calvin_Week02_Lab
 E:\Projects\Techpro\Lab02_Calculator\bin\Debug\Calculator.exe.config
 E:\Projects\Techpro\Lab02_Calculator\obj\Debug\Calculator.exe
 E:\Projects\Techpro\Lab02_Calculator\obj\Debug\Calculator.pdb
+E:\Projects\Techpro\Lab02_Calculator\bin\Debug\Calculator.exe
+E:\Projects\Techpro\Lab02_Calculator\bin\Debug\Calculator.pdb
+E:\Projects\Techpro\Lab02_Calculator\obj\Debug\Calculator.Form1.resources
+E:\Projects\Techpro\Lab02_Calculator\obj\Debug\Calculator.Properties.Resources.resources
+E:\Projects\Techpro\Lab02_Calculator\obj\Debug\Calculator.csproj.GenerateResource.Cache

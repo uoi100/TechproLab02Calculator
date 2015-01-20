@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 
+
 namespace Calculator
 {
     /// <summary>
@@ -18,11 +19,15 @@ namespace Calculator
     /// Author: Calvin Truong
     /// 
     /// </summary>
+    /// 
+
     class Calculator
     {
         private ArrayList prevOperation;
         private Operation currentOperation;
         private int trailingZeros;
+        private int status;
+        private double memory;
 
         /// <summary>
         /// Description: Constructor, creates a new operation and an empty arraylist to hold those operations,
@@ -33,6 +38,8 @@ namespace Calculator
             currentOperation = new Operation();
             prevOperation = new ArrayList();
             trailingZeros = 0;
+            status = 0;
+            memory = 0;
         }
 
         /// <summary>
@@ -46,6 +53,9 @@ namespace Calculator
         /// <param name="num">Adds the number to the current operation's value</param>
         public void addNumber(int num)
         {
+            if (status != 0)
+                return;
+
             if (currentOperation.Type != 'V' && currentOperation.Value != 0)
             {
                 prevOperation.Add(new Operation(currentOperation.Value, currentOperation.Type));
@@ -58,7 +68,6 @@ namespace Calculator
             else
             {
                 string[] str_decimals = currentOperation.Value.ToString().Split('.');
-                Console.WriteLine("Decimal Length: " + str_decimals.Length);
                 if (str_decimals.Length == 1)
                 {
                     if (num != 0)
@@ -82,12 +91,15 @@ namespace Calculator
             }
         }
 
+        /// <summary>
+        /// Performs calculations starting from the left operation to the right
+        /// </summary>
         public void calculate()
         {
             double total = 0;
             char operation = 'V';
 
-            if (prevOperation.Count <= 0)
+            if (prevOperation.Count <= 0 || status != 0)
                 return;
 
             // Calculate all operations in the previous operation arraylist first
@@ -100,25 +112,39 @@ namespace Calculator
                 }
                 else
                 {
+                    if (operation == '/' && n.Value == 0)
+                    {
+                        status = 1;
+                        prevOperation.Clear();
+                        return;
+                    }
                     total = calculation(total, operation, n);
                     operation = n.Type;
                 }
             }
             
             // calculate current operation now
-             if( !(operation == '/' && currentOperation.Value == '0') )
-                 total = calculation(total, operation, currentOperation);
-            
-            
-            currentOperation = new Operation();
-            currentOperation.Value = total;
+            if (operation == '/' && currentOperation.Value == 0)
+            {
+                status = 1;
+                prevOperation.Clear();
+                return;
+            }
+            else
+            {
+                total = calculation(total, operation, currentOperation);
 
-            string[] str_decimalNums = currentOperation.Value.ToString().Split('.');
-            if (str_decimalNums.Length > 1)
-                currentOperation.IsDecimal = true;
 
-            prevOperation.Clear();
-            trailingZeros = 0;
+                currentOperation = new Operation();
+                currentOperation.Value = total;
+
+                string[] str_decimalNums = currentOperation.Value.ToString().Split('.');
+                if (str_decimalNums.Length > 1)
+                    currentOperation.IsDecimal = true;
+
+                prevOperation.Clear();
+                trailingZeros = 0;
+            }
         }
 
         /// <summary>
@@ -148,6 +174,8 @@ namespace Calculator
         /// <param name="operation">The operation such as +, -, *, /</param>
         public void addOperation(char operation)
         {
+            if (status != 0)
+                return;
             currentOperation.Type = operation;
         }
 
@@ -202,5 +230,136 @@ namespace Calculator
         {
             currentOperation.IsDecimal = true;
         }
+
+        /// <summary>
+        /// Description: checks if the calculator's status is good and returns true if it is
+        /// </summary>
+        /// <returns>Returns if the status of the calculator is good or not</returns>
+        public Boolean isGood() { return status == 0; }
+
+        /// <summary>
+        /// Description: Returns a string of the error status of the calculator
+        /// </summary>
+        /// <returns>Returns the error status of the calculator</returns>
+        public string getError()
+        {
+            if (status == 1)
+                return "Divide by Zero error";
+            else
+                return "No error has occured";
+        }
+
+        /// <summary>
+        /// Description: set the current operend's value from positive to negative and vice versa
+        /// </summary>
+        public void setPosNeg()
+        {
+            currentOperation.Value *= -1;
+        }
+
+        /// <summary>
+        /// Description: Sets the current operand to 0;
+        /// </summary>
+        public void clearCurrent()
+        {
+            currentOperation = new Operation();
+            trailingZeros = 0;
+            status = 0;
+        }
+
+        /// <summary>
+        /// Description: Clear all the operands
+        /// </summary>
+        public void clearAll()
+        {
+            currentOperation = new Operation();
+            trailingZeros = 0;
+            status = 0;
+            prevOperation.Clear();
+        }
+
+        /// <summary>
+        /// Description: Deletes the last character that would have been outputed onto the textbox.
+        /// The first character that would be deleted would be the type of operation if any,
+        /// the next character that would be deleted would be any trailing zeros
+        /// the last would be any numbers.
+        /// </summary>
+        public void backSpace()
+        {
+
+            if (currentOperation.Type != 'V')            // if the operation type isn't void, set it to void
+            {
+                currentOperation.Type = 'V';
+            }
+            else if (trailingZeros > 0)                 // if there are trailing zeros decrement the trailingzero variable
+            {
+                trailingZeros--;
+            }
+            else
+            {
+                string str_operand = currentOperation.Value.ToString();
+                string temp = str_operand.Substring(0, str_operand.Length - 1);
+                char[] c = temp.ToCharArray();
+
+                int i = c.Length;
+
+                if (i == 0)
+                {
+                    currentOperation.Value = 0;
+                }
+                else
+                {
+                    // If there are trailing zeros after the deleted number, count them all
+                    trailingZeros = 0;
+                    while (c[i - 1] == '0')
+                    {
+                        trailingZeros++;
+                        i--;
+                        if (i <= 0)
+                            break;
+                    }
+                }
+
+                if (i != 0)
+                {
+                    // parse the string back into a double
+                    currentOperation.Value = double.Parse(temp);
+                    // Check if there are still decimal numbers
+                    string[] str_decimalNums = currentOperation.Value.ToString().Split('.');
+                    if (str_decimalNums.Length <= 1)
+                        currentOperation.IsDecimal = false;
+                }
+            }    
+        }
+
+        public void memoryAdd()
+        {
+            memory += currentOperation.Value;
+        }
+
+        public void memoryRecall()
+        {
+            if (currentOperation.Type == 'V')
+                currentOperation.Value = memory;
+            else
+            {
+                prevOperation.Add(currentOperation);
+                currentOperation = new Operation();
+                trailingZeros = 0;
+                currentOperation.Value = memory;
+            }
+        }
+
+        public void memoryClear()
+        {
+            memory = 0;
+        }
+
+        public void memoryStore()
+        {
+            memory = currentOperation.Value;
+        }
+
+        // end of class
     }
 }
