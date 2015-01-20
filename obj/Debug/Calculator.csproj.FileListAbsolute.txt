@@ -1,0 +1,15 @@
+C:\Users\uoi100\OneDrive\BCIT\Tech Pro\A00812171_Truong_Calvin_Week02_Lab02_Calculator\Calculator\bin\Debug\Calculator.exe.config
+C:\Users\uoi100\OneDrive\BCIT\Tech Pro\A00812171_Truong_Calvin_Week02_Lab02_Calculator\Calculator\bin\Debug\Calculator.exe
+C:\Users\uoi100\OneDrive\BCIT\Tech Pro\A00812171_Truong_Calvin_Week02_Lab02_Calculator\Calculator\bin\Debug\Calculator.pdb
+C:\Users\uoi100\OneDrive\BCIT\Tech Pro\A00812171_Truong_Calvin_Week02_Lab02_Calculator\Calculator\obj\Debug\Calculator.csprojResolveAssemblyReference.cache
+C:\Users\uoi100\OneDrive\BCIT\Tech Pro\A00812171_Truong_Calvin_Week02_Lab02_Calculator\Calculator\obj\Debug\Calculator.Form1.resources
+C:\Users\uoi100\OneDrive\BCIT\Tech Pro\A00812171_Truong_Calvin_Week02_Lab02_Calculator\Calculator\obj\Debug\Calculator.Properties.Resources.resources
+C:\Users\uoi100\OneDrive\BCIT\Tech Pro\A00812171_Truong_Calvin_Week02_Lab02_Calculator\Calculator\obj\Debug\Calculator.csproj.GenerateResource.Cache
+C:\Users\uoi100\OneDrive\BCIT\Tech Pro\A00812171_Truong_Calvin_Week02_Lab02_Calculator\Calculator\obj\Debug\Calculator.exe
+C:\Users\uoi100\OneDrive\BCIT\Tech Pro\A00812171_Truong_Calvin_Week02_Lab02_Calculator\Calculator\obj\Debug\Calculator.pdb
+C:\Users\Calvin Truong\OneDrive\BCIT\Tech Pro\A00812171_Truong_Calvin_Week02_Lab02_Calculator\Calculator\bin\Debug\Calculator.exe.config
+C:\Users\Calvin Truong\OneDrive\BCIT\Tech Pro\A00812171_Truong_Calvin_Week02_Lab02_Calculator\Calculator\obj\Debug\Calculator.exe
+C:\Users\Calvin Truong\OneDrive\BCIT\Tech Pro\A00812171_Truong_Calvin_Week02_Lab02_Calculator\Calculator\obj\Debug\Calculator.pdb
+E:\Projects\Techpro\Lab02_Calculator\bin\Debug\Calculator.exe.config
+E:\Projects\Techpro\Lab02_Calculator\obj\Debug\Calculator.exe
+E:\Projects\Techpro\Lab02_Calculator\obj\Debug\Calculator.pdb
